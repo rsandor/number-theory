@@ -4,7 +4,7 @@
   "description": "Number theory functions for javascript.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "lab -v -a code"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/rsandor/number-theory/issues"
   },
-  "homepage": "https://github.com/rsandor/number-theory"
+  "homepage": "https://github.com/rsandor/number-theory",
+  "devDependencies": {
+    "code": "^1.4.0",
+    "lab": "^5.8.1"
+  }
 }

@@ -49,12 +49,12 @@ function modpow(base, exponent, mod) {
 function miller(n) {
   if (n < 2) return false;
   if (n == 2 || n == 3) return true;
-  if (!(n & 1) || n% 3 == 0) return false;
+  if (!(n & 1) || n % 3 == 0) return false;
 
   // Find n-1 = 2^s * d such that d is odd
-  var d = n / 2;
+  var d = (n / 2)|0;
   var s = 1;
-  while (!(d & 1)) { d /= 2; s++; }
+  while (!(d & 1)) { d = d >> 1; s++; }
 
   var witnesses;
 
@@ -74,22 +74,20 @@ function miller(n) {
     witnesses = [2, 3, 5, 7, 11, 13, 17];
   }
 
-  var size = witnesses.length;
-
-  for (var i = 0; i < size; i++) {
+  for (var i = 0; i < witnesses.length; i++) {
     var a = witnesses[i];
     var x = modpow(a, d, n);
     var y = 0;
     var q = s;
-    while (q) {
+    while (q > 0) {
       y = (x * x) % n;
-      if (y == 1 && x != 1 && x != n - 1) {
+      if (y === 1 && x !== 1 && x !== n - 1) {
         return false;
       }
       x = y;
 			--q;
     }
-    if (y != 1) return false;
+    if (y !== 1) return false;
   }
 
 	return true;
