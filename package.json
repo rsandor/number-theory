@@ -1,6 +1,6 @@
 {
   "name": "number-theory",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Number theory functions for javascript.",
   "main": "index.js",
   "scripts": {
