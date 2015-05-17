@@ -8,8 +8,64 @@
 module.exports = {
   miller: miller,
   modpow: modpow,
-  gcd: gcd
+  gcd: gcd,
+  sieve: sieve,
+  factor: factor
 };
+
+var primes = sieve(1000000);
+
+function factor(n) {
+  if (!primes || primes[primes.length - 1] < n) {
+    primes = sieve(n);
+  }
+
+  var factors = [];
+
+  for (var k = 0; k < primes.length && n > 1; k++) {
+    var p = primes[k];
+    if (n % p === 0) {
+      var factor = { prime: p, power: 0 };
+      while (n % p === 0) {
+        factor.power++;
+        n /= p;
+      }
+      factors.push(factor);
+    }
+  }
+
+  return factors;
+}
+
+
+
+/**
+ * Sieves primes from 1 to the given number.
+ * @param {Number} n Upper bound for the sieve.
+ * @return {Array} A list of primes between 1 and n.
+ */
+function sieve(n) {
+  var numbers = new Array(n);
+
+  for (var i = 0; i < n; i++) {
+    numbers[i] = true;
+  }
+
+  for (var i = 2; i < Math.sqrt(n); i++) {
+    for (var j = i*i; j < n; j += i) {
+      numbers[j] = false;
+    }
+  }
+
+  var primes = [];
+  for (var i = 2; i < n; i++) {
+    if (numbers[i]) {
+      primes.push(i);
+    }
+  }
+
+  return primes;
+}
 
 /**
  * Finds the greatest common divisor between two integers.
