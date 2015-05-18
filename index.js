@@ -10,11 +10,18 @@ module.exports = {
   modpow: modpow,
   gcd: gcd,
   sieve: sieve,
-  factor: factor
+  factor: factor,
+  incTuple: incTuple,
+  divisors: divisors
 };
 
-var primes = sieve(1000000);
+var primes = sieve(100000);
 
+/**
+ * Determines the prime factors for the given integer.
+ * @param {Number} n Number to factor.
+ * @return {Array} A list of prime factors and the powers of those factors.
+ */
 function factor(n) {
   if (!primes || primes[primes.length - 1] < n) {
     primes = sieve(n);
@@ -37,7 +44,71 @@ function factor(n) {
   return factors;
 }
 
+/**
+ * Determines all of the divisors for a given number.
+ * @param {Number} n Number for which to find the factors.
+ * @return {Array} A list of all divisors for the given number.
+ */
+function divisors(n) {
+  var factors = factor(n);
+  var powers = factors.map(function (factor) {
+    return 0;
+  });
+  var maxPowers = factors.map(function (factor) {
+    return factor.power;
+  });
 
+  var divisors = [1];
+  while (true) {
+    powers = incTuple(powers, maxPowers);
+    var d = powers.map(function (m, i) {
+      return Math.pow(factors[i].prime, m);
+    }).reduce(function (memo, curr) {
+      return memo * curr;
+    }, 1);
+    if (d === 1) break;
+    divisors.push(d);
+  }
+
+  divisors.sort(function (a, b) {
+    return parseInt(a) - parseInt(b);
+  });
+  return divisors;
+}
+
+/**
+ * Increment an n-dimensional tuple of integers representing a number with
+ * mixed digit bases.
+ *
+ * @example
+ * incTuple([0, 0], [1, 2]) // Returns [1, 0]
+ * incTuple([1, 0], [1, 2]) // Returns [0, 1]
+ * incTuple([0, 1], [1, 2]) // Returns [1, 1]
+ * incTuple([1, 1], [1, 2]) // Returns [0, 2]
+ * incTuple([0, 2], [1, 2]) // Returns [1, 2]
+ * incTuple([1, 2], [1, 2]) // Returns [0, 0]
+ *
+ * @param {array} tuple A mixed base number.
+ * @param {array} bases The bases for each of the "digit" entries in the tuple.
+ * @return {array} The next number in the sequence.
+ */
+function incTuple(tuple, bases) {
+  var result = tuple.map(function (value) { return value; });
+  result[0]++;
+  for (var k = 0; k < tuple.length; k++) {
+    if (result[k] <= bases[k]) {
+      break;
+    }
+    else if (k !== tuple.length - 1){
+      result[k] = 0;
+      result[k+1]++;
+    }
+    else {
+      result[k] = 0;
+    }
+  }
+  return result;
+}
 
 /**
  * Sieves primes from 1 to the given number.
