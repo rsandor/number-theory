@@ -29,7 +29,8 @@
   "homepage": "https://github.com/rsandor/number-theory",
   "devDependencies": {
     "code": "^1.4.0",
-    "lab": "^5.8.1"
+    "lab": "^5.8.1",
+    "jsdoc": "*"
   },
   "dependencies": {
     "underscore": "*"

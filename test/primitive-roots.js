@@ -15,30 +15,30 @@ describe('primitive roots', function () {
 	193,197,199,211,223,227,229,233,467,479,487,491,499,503,509,521,523,541,547,557,563,569,571,577,587,593,599,601,
     ];
     
-    it('should find primitive roots', function(done) {
-	primes.forEach(function (prime) {
+    primes.forEach(function (prime) {
+	it("primitive root mod " + prime.toString() + " is primitive", function(done) {	    
 	    var root = NumberTheory.primitiveRoot(prime);
 	    
 	    for( var i=1; i < prime - 1; i++ )
 		expect(NumberTheory.powerMod(root, i, prime)).to.not.equal(1);
 	    
 	    expect(NumberTheory.powerMod(root, prime - 1, prime)).to.equal(1);
+	    
+	    done();
 	});
-	
-	done();
     });
 
-    it('should find random primitive roots', function(done) {
-	primes.forEach(function (prime) {
+    primes.forEach(function (prime) {
+	it("random primitive root mod " + prime.toString() + " is primitive", function(done) {	    
 	    var root = NumberTheory.randomPrimitiveRoot(prime);
 	    
 	    for( var i=1; i < prime - 1; i++ )
 		expect(NumberTheory.powerMod(root, i, prime)).to.not.equal(1);
 	    
 	    expect(NumberTheory.powerMod(root, prime - 1, prime)).to.equal(1);
+	    
+	    done();
 	});
-	
-	done();
     });
 
 });
