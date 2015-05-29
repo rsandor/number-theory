@@ -145,8 +145,14 @@ function sieve(n) {
  * @return The gcd of a and b.
  */
 function gcd(a, b) {
-	if (b == 0) return a;
-	return gcd(b, a % b);
+    if (a < 0) a = -a;
+    if (b < 0) b = -b;
+    while (true) {
+        if (b === 0) return a;
+        a %= b;
+        if (a === 0) return b;
+        b %= a;
+    }
 }
 
 /**
