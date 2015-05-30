@@ -12,22 +12,22 @@ module.exports = {
     eulerPhi: eulerPhi,
     factor: factor,
     findDivisor: findDivisor,
-    gcd: gcd, // tests
+    gcd: gcd,s
     incTuple: incTuple,
     inverseMod: inverseMod,
-    isPrime: isPrime, // test
-    jacobiSymbol: jacobiSymbol, // test
+    isPrime: isPrime,
+    jacobiSymbol: jacobiSymbol,
     logMod: logMod,
-    miller: miller, // test
-    isProbablyPrime: miller, // test    
+    miller: miller,
+    isProbablyPrime: miller,    
     multiplyMod: multiplyMod,
-    powerMod: powerMod, // tests
-    modpow: powerMod,  // tests
-    primitiveRoot: primitiveRoot, // test
+    powerMod: powerMod,s
+    modpow: powerMod, s
+    primitiveRoot: primitiveRoot,
     quadraticNonresidue: quadraticNonresidue,
-    randomPrimitiveRoot: randomPrimitiveRoot, // test
+    randomPrimitiveRoot: randomPrimitiveRoot,
     sieve: sieve,
-    squareRootModPrime: squareRootModPrime, // test
+    squareRootModPrime: squareRootModPrime,
     squareRootMod: squareRootMod,
 };
 
@@ -568,20 +568,23 @@ function squareRootMod(n,modulus) {
 
     // BADBAD
     _.each( factor( modulus ), function(f) {
+	var p = f.prime;
+	var exponent = f.power;
+	
 	var s = squareRootModPrime( n, p );
 
-	if (gcd(m,p) == 1) {
-	    // Chinese remainder theorem
-	    var combined = [];
+	// Chinese remainder theorem
+	var combined = [];
 
-	    _.each( results, function(r) {
-		// find a lift of r mod m and s mod p
-		combined.unshift( r * p * inverseMod( p, m ) + s * m * inverseMod( m, p ) );
-		combined.unshift( r * p * inverseMod( p, m ) - s * m * inverseMod( m, p ) );
-	    });
+	_.each( results, function(r) {
+	    // find a lift of r mod m and s mod p
+	    combined.unshift( r * p * inverseMod( p, m ) + s * m * inverseMod( m, p ) );
+	    combined.unshift( r * p * inverseMod( p, m ) - s * m * inverseMod( m, p ) );
+	});
 
-	    results = _.uniq( combined );
-	} else {
+	results = _.uniq( combined );
+
+	if (f.power > 1) {
 	    // Hensel's lemma
 
 	    /*
@@ -617,6 +620,7 @@ function squareRootMod(n,modulus) {
     return _.map( results, function(r) { return ((r % modulus) + modulus) % modulus; });
 };
 
+console.log( squareRootMod( 2, 49 ) );
 
 var babyStepGiantStepTables = {}; // to cache the discrete log tables
 
