@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('underscore');
-
 /**
  * Number theoretic function library.
  * @author Ryan Sandor Richards
@@ -12,7 +10,7 @@ module.exports = {
     eulerPhi: eulerPhi,
     factor: factor,
     findDivisor: findDivisor,
-    gcd: gcd,s
+    gcd: gcd,
     incTuple: incTuple,
     inverseMod: inverseMod,
     isPrime: isPrime,
@@ -21,8 +19,8 @@ module.exports = {
     miller: miller,
     isProbablyPrime: miller,    
     multiplyMod: multiplyMod,
-    powerMod: powerMod,s
-    modpow: powerMod, s
+    powerMod: powerMod,
+    modpow: powerMod,
     primitiveRoot: primitiveRoot,
     quadraticNonresidue: quadraticNonresidue,
     randomPrimitiveRoot: randomPrimitiveRoot,
@@ -30,6 +28,8 @@ module.exports = {
     squareRootModPrime: squareRootModPrime,
     squareRootMod: squareRootMod,
 };
+
+var _ = require('underscore');
 
 var primes = sieve(100000);
 
@@ -619,8 +619,6 @@ function squareRootMod(n,modulus) {
 
     return _.map( results, function(r) { return ((r % modulus) + modulus) % modulus; });
 };
-
-console.log( squareRootMod( 2, 49 ) );
 
 var babyStepGiantStepTables = {}; // to cache the discrete log tables
 
