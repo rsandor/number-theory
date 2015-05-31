@@ -566,7 +566,6 @@ function squareRootMod(n,modulus) {
     var m = 1;
     var results = [0];
 
-    // BADBAD
     _.each( factor( modulus ), function(f) {
 	var p = f.prime;
 	var exponent = f.power;
@@ -576,6 +575,9 @@ function squareRootMod(n,modulus) {
 	// Chinese remainder theorem
 	var combined = [];
 
+	if (jacobiSymbol( n, p ) != 1)
+	    return [];
+	
 	_.each( results, function(r) {
 	    // find a lift of r mod m and s mod p
 	    combined.unshift( r * p * inverseMod( p, m ) + s * m * inverseMod( m, p ) );
@@ -584,7 +586,14 @@ function squareRootMod(n,modulus) {
 
 	results = _.uniq( combined );
 
-	if (f.power > 1) {
+	m = m * p;
+	var soFar = 1;
+	exponent--;
+	
+	while (exponent > 0) {
+	    var q = Math.pow( p, Math.min( soFar, exponent ) );
+	    exponent -= Math.min( soFar, exponent );
+	    
 	    // Hensel's lemma
 
 	    /*
@@ -594,31 +603,42 @@ function squareRootMod(n,modulus) {
 	      = r^2 - n + 2*r*t*m + t*m*t*m
 	      = f(r) + 2*r*t*m + t*m*t*m
 
-	    So we want to find t so that 0 equiv f(r+t*m) equiv f(r) + 2*r*t*m mod (m*p)
+	    So we want to find t so that 0 equiv f(r+t*m) equiv f(r) + 2*r*t*m mod (m*q)
 
 	    Now f(r) = z m, so
 
-	    0 equiv (z + 2*r*t)*m mod (m*p)
+	    0 equiv (z + 2*r*t)*m mod (m*q)
 
-	    so p divides (z + 2*r*t)
+	    so q divides (z + 2*r*t)
 
-	    so solving for t yields  t = (-z) * (1/(2*r)) mod p
+	    so solving for t yields  t = (-z) * (1/(2*r)) mod q
 
 	    and z = f(r) / m
 
 	    giving the formula
 	    */
-	    
+
 	    results = _.map( results, function(r) {
-		return r + ((-((r*r - n) / m) * inverseMod(2 * r, p) ) % p) * m;
+		return r + multiplyMod( -((r*r - n) / m), inverseMod(2 * r, q), q ) * m;
 	    });
+
+	    m = m * q;
 	}
 
-	m = m * p;
     });
-
+    
     return _.map( results, function(r) { return ((r % modulus) + modulus) % modulus; });
 };
+
+var a = 2;
+var m = 5*11;
+var roots = squareRootMod( a, m );
+console.log( a.toString() + " on " + m.toString() + " = " + jacobiSymbol(a,m) );
+console.log( JSON.stringify(roots) + " roots of " + a.toString() + " mod " + m.toString() );
+
+roots.forEach( function(r) {
+    console.log( multiplyMod(r, r, m) );
+});
 
 var babyStepGiantStepTables = {}; // to cache the discrete log tables
 
