@@ -17,6 +17,11 @@
     "math"
   ],
   "author": "Ryan Sandor Richards <sandor.richards@gmail.com>",
+  "contributors": [
+      {"name": "Jim Fowler",
+       "email": "fowler@math.osu.edu",
+       "url": "http://kisonecat.com/"}
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rsandor/number-theory/issues"
@@ -24,6 +29,10 @@
   "homepage": "https://github.com/rsandor/number-theory",
   "devDependencies": {
     "code": "^1.4.0",
-    "lab": "^5.8.1"
+    "lab": "^5.8.1",
+    "jsdoc": "*"
+  },
+  "dependencies": {
+    "underscore": "*"
   }
 }
