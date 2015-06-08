@@ -139,8 +139,7 @@ Solves a discrete logarithm. For more information see the following:
 * [Discrete Lograrithm](http://en.wikipedia.org/wiki/Discrete_logarithm)
 * [Baby-step Giant-step algorithm](http://en.wikipedia.org/wiki/Baby-step_giant-step)
 
-### miller(n)
-### isProbablyPrime(n)
+### miller(n), isProbablyPrime(n)
 Uses the determinisic [Miller-Rabin Primality Test](http://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test)
 to determine if the given number is prime. Works for all positive integers less
 than 341,550,071,728,321.
