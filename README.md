@@ -1,5 +1,7 @@
 # number-theory
 
+A number theory toolkit for JavaScript.
+
 ## Functions
 
 ### `gcd(a, b)`
