@@ -6,14 +6,14 @@ var describe = lab.describe;
 var it = lab.it;
 var expect = require('code').expect;
 
-var modpow = require('../index').modpow;
+var modpow = require('../index').powerMod;
 
 describe('modpow', function () {
   it("2**(-123456789) * 12373 mod 104743 = 1", function(done) {
       expect((modpow(2, -123456789, 104743) * 12373) % 104743).to.equal(1);
       done();
-  });    
-    
+  });
+
   var pairs = [
       { base: 2, exp: 50, mod: 13, result: 4 },
       { base: 10, exp: 10, mod: 11, result: 1 },
@@ -21,7 +21,7 @@ describe('modpow', function () {
       { base: 7600, exp: 283, mod: 13, result: 5 },
       { base: 2, exp: 123456789, mod: 104743, result: 12373 },
       { base: 2, exp: 13395, mod: 179424779, result: 59783755 },
-      { base: 2, exp: 926865135, mod: 2038074803, result: 513 },                  
+      { base: 2, exp: 926865135, mod: 2038074803, result: 513 },
   ];
   it('should calculate modpow', function(done) {
     pairs.forEach(function (pair) {
