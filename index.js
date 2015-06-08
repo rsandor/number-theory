@@ -27,5 +27,6 @@ module.exports = {
   randomPrimitiveRoot: require('./lib/random_primitive_root'),
   sieve: require('./lib/sieve'),
   squareRootMod: require('./lib/square_root_mod'),
-  squareRootModPrime: require('./lib/square_root_mod_prime')
+  squareRootModPrime: require('./lib/square_root_mod_prime'),
+  totient: require('./lib/euler_phi'),
 };
