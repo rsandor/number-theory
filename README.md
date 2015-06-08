@@ -2,28 +2,6 @@
 
 A number theory toolkit for JavaScript.
 
-## Contributing
-
-Pull requests are very welcome! If you see a function we're missing, have an
-alternate algorithm implementation, or even want to add a special case function
-we'd be delighted to review your code.
-
-Try to stick to the following guidelines, as they will help get the PR merged
-and published quickly:
-
-* New functions should be added to their own file under the `lib/` directory
-* Make sure to add an entry in the `module.exports` for new functions in the
-  `index.js` file.
-* Use two space characters per tab
-* Please document your function using [jsdoc](https://github.com/jsdoc3/jsdoc)
-  (see any function in `lib/` for an example on how to do this).
-* Write a test for your function and place it in the `tests/` folder with the
-  same name that you gave for its `lib/` counterpart.
-* Add an entry to the documentation in this file (`README.md`). Also please try
-  to keep the function list alphabetized for quick reference.
-
-Thanks!
-
 ## Functions
 
 ### divisors(n)
@@ -230,6 +208,28 @@ to determine a single square root in Z mod p.
 var squareRootModPrime = require('number-theory').squareRootModPrime;
 squareRootModPrime(100, 19) // Returns 9
 ```
+
+## Contributing
+
+Pull requests are very welcome! If you see a function we're missing, have an
+alternate algorithm implementation, or even want to add a special case function
+we'd be delighted to review your code.
+
+Try to stick to the following guidelines, as they will help get the PR merged
+and published quickly:
+
+* New functions should be added to their own file under the `lib/` directory
+* Make sure to add an entry in the `module.exports` for new functions in the
+  `index.js` file.
+* Use two space characters per tab
+* Please document your function using [jsdoc](https://github.com/jsdoc3/jsdoc)
+  (see any function in `lib/` for an example on how to do this).
+* Write a test for your function and place it in the `tests/` folder with the
+  same name that you gave for its `lib/` counterpart.
+* Add an entry to the documentation in this file (`README.md`). Also please try
+  to keep the function list alphabetized for quick reference.
+
+Thanks!
 
 ## License
 MIT
