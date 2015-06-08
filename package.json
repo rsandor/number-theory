@@ -1,6 +1,6 @@
 {
   "name": "number-theory",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Number theory functions for javascript.",
   "main": "index.js",
   "scripts": {
@@ -18,9 +18,11 @@
   ],
   "author": "Ryan Sandor Richards <sandor.richards@gmail.com>",
   "contributors": [
-      {"name": "Jim Fowler",
-       "email": "fowler@math.osu.edu",
-       "url": "http://kisonecat.com/"}
+    {
+      "name": "Jim Fowler",
+      "email": "fowler@math.osu.edu",
+      "url": "http://kisonecat.com/"
+    }
   ],
   "license": "MIT",
   "bugs": {
