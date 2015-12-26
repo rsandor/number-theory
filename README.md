@@ -90,6 +90,87 @@ var inverseMod = require('number-theory').inverseMod;
 inverseMod(14, 17); // Returns 11
 ```
 
+### isAbundant(n)
+Given an integer, returns a Boolean indicating whether it's an [abundant number](https://en.wikipedia.org/wiki/Abundant_number).
+
+```js
+var isAbundant = require('number-theory').isAbundant;
+isAbundant(36); // Returns true
+isAbundant(35); // Returns false
+```
+
+### isDeficient(n)
+Given an integer, returns a Boolean indicating whether it's a [deficient number](https://en.wikipedia.org/wiki/Deficient_number).
+
+```js
+var isDeficient = require('number-theory').isDeficient;
+isDeficient(15); // Returns true
+isDeficient(12); // Returns false
+```
+
+### isHeptagonal(n)
+Given an integer, returns a Boolean indicating whether it's a [heptagonal number](https://en.wikipedia.org/wiki/Heptagonal_number).
+
+```js
+var isHeptagonal = require('number-theory').isHeptagonal;
+isHeptagonal(112); // Returns true
+isHeptagonal(175); // Returns false
+```
+
+### isHexagonal(n)
+Given an integer, returns a Boolean indicating whether it's a [hexagonal number](https://en.wikipedia.org/wiki/Hexagonal_number).
+
+```js
+var isHexagonal = require('number-theory').isHexagonal;
+isHexagonal(190); // Returns true
+isHexagonal(50); // Returns false
+```
+
+### isOctagonal(n)
+Given an integer, returns a Boolean indicating whether it's an [octagonal number](https://en.wikipedia.org/wiki/Octagonal_number).
+
+```js
+var isOctagonal = require('number-theory').isOctagonal;
+isOctagonal(65); // Returns true
+isOctaongal(50); // Returns false
+```
+
+### isPentagonal(n)
+Given an integer, returns a Boolean indicating whether it's a [pentagonal number](https://en.wikipedia.org/wiki/Pentagonal_number).
+
+```js
+var isPentagonal = require('number-theory').isPentagonal;
+isPentagonal(92); // Returns true
+isPentagona(50); // Returns false
+```
+
+### isPerfect(n)
+Given an integer, returns a Boolean indicating whether it's a [perfect number](https://en.wikipedia.org/wiki/Perfect_number).
+
+```js
+var isPerfect = require('number-theory').isPerfect;
+isPerfect(496); // Returns true
+isPerfect(200); // Returns false
+```
+
+### isSquare(n)
+Given an integer, returns a Boolean indicating whether it's a [square number](https://en.wikipedia.org/wiki/Square_number).
+
+```js
+var isSquare = require('number-theory').isSquare;
+isSquare(16); // Returns true
+isSquare(55); // Returns false
+```
+
+### isTriangular(n)
+Given an integer, returns a Boolean indicating whether it's a [triangular number](https://en.wikipedia.org/wiki/Triangular_number).
+
+```js
+var isTriangular = require('number-theory').isTriangular;
+isTriangular(21); // Returns true
+isTriangular(25); // Returns false
+```
+
 ### isPrime(n)
 Determines if the given number is [prime](http://en.wikipedia.org/wiki/Prime_number).
 Note: this is a particularly slow method that uses full prime factorization to
