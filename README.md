@@ -153,6 +153,18 @@ isPerfect(496); // Returns true
 isPerfect(200); // Returns false
 ```
 
+### isPrime(n)
+Determines if the given number is [prime](http://en.wikipedia.org/wiki/Prime_number).
+Note: this is a particularly slow method that uses full prime factorization to
+determine if the number is prime. For a faster method see the `miller` function
+below.
+
+```js
+var isPrime = require('number-theory').isPrime;
+isPrime(7); // Returns true
+isPrime(48); // Returns false
+```
+
 ### isSquare(n)
 Given an integer, returns a Boolean indicating whether it's a [square number](https://en.wikipedia.org/wiki/Square_number).
 
@@ -169,18 +181,6 @@ Given an integer, returns a Boolean indicating whether it's a [triangular number
 var isTriangular = require('number-theory').isTriangular;
 isTriangular(21); // Returns true
 isTriangular(25); // Returns false
-```
-
-### isPrime(n)
-Determines if the given number is [prime](http://en.wikipedia.org/wiki/Prime_number).
-Note: this is a particularly slow method that uses full prime factorization to
-determine if the number is prime. For a faster method see the `miller` function
-below.
-
-```js
-var isPrime = require('number-theory').isPrime;
-isPrime(7); // Returns true
-isPrime(48); // Returns false
 ```
 
 ### jacobiSymbol(a, b)
