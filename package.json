@@ -32,9 +32,10 @@
   "devDependencies": {
     "code": "^1.4.0",
     "lab": "^5.8.1",
-    "jsdoc": "*"
+    "jsdoc": "*",
+    "underscore": "*"
   },
   "dependencies": {
-    "underscore": "*"
+    "compute-unique": "^1.0.1"
   }
 }
