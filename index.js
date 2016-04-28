@@ -12,6 +12,7 @@ module.exports = {
   factor: require('./lib/factor'),
   findDivisor: require('./lib/find_divisor'),
   gcd: require('./lib/gcd'),
+  lcm: require('./lib/lcm'),
   incMixed: require('./lib/inc_mixed'),
   inverseMod: require('./lib/inverse_mod'),
   isAbundant: require('./lib/is_abundant'),
