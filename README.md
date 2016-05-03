@@ -192,6 +192,15 @@ var jacobiSymbol = require('number-theory').jacobiSymbol;
 jacobiSymbol(928, 33); // returns 1
 ```
 
+### lcm(a, b)
+Finds the [least common multiple](https://en.wikipedia.org/wiki/Least_common_multiple)
+of two integers a and b.
+
+```js
+var lcm = require('number-theory').lcm;
+lcm(4, 3); // Returns 12
+```
+
 ### logMod(a, b, m)
 Solves a discrete logarithm. For more information see the following:
 
