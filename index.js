@@ -29,6 +29,8 @@ module.exports = {
   jacobiSymbol: require('./lib/jacobi_symbol'),
   logMod: require('./lib/log_mod'),
   miller: require('./lib/miller'),
+  mobius: require('./lib/mobius'),
+  mobiusRange: require('./lib/mobius-range'),
   multiplyMod: require('./lib/multiply_mod'),
   powerMod: require('./lib/power_mod'),
   primeFactors: require('./lib/prime_factors'),

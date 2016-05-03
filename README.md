@@ -207,6 +207,22 @@ Solves a discrete logarithm. For more information see the following:
 * [Discrete Lograrithm](http://en.wikipedia.org/wiki/Discrete_logarithm)
 * [Baby-step Giant-step algorithm](http://en.wikipedia.org/wiki/Baby-step_giant-step)
 
+### mobius(n)
+Compute the value of the [Möbius function](https://en.wikipedia.org/wiki/M%C3%B6bius_function) for n using naive factorization. The Möbius function is defined as 1 if n is a square-free integer with an even number of prime factors, -1 if square-free with an odd number of prime factors, and 0 if n has a squared prime factor.
+
+```js
+var mobius = require('number-theory').mobius;
+mobius(30); // Returns -1
+```
+
+### mobiusRange(n1, n2[, primalityTest = miller])
+Compute the value of the [Möbius function](https://en.wikipedia.org/wiki/M%C3%B6bius_function) for integers from n1 to n2 - 1 (inclusive) using a sieve method. Compared to `mobius`, this method still effectively factors each integer but is somewhat more efficient than factoring and computing each value individually. Numbers less than min(n1, sqrt(n2)) cannot be sieved implicitly during computation, so an explicit primality test must be performed. By default, the deterministic Miller-Rabin primality test is used, but any boolean primality test may optionally be provided.
+
+```js
+var mobiusRange = require('number-theory').mobiusRange;
+mobiusRange(1000000, 1000005); // Returns [0, 1, -1, -1, 0]
+```
+
 ### miller(n), isProbablyPrime(n)
 Uses the determinisic [Miller-Rabin Primality Test](http://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test)
 to determine if the given number is prime. Works for all positive integers less
